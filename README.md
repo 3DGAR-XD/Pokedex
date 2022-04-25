@@ -15,17 +15,40 @@ It should be noted that I have also used the documentation of [Boostrap](https:/
 
 If you want to watch the code, i recommend you  that prettify the code.
 
-### Functions
-
-In this section i will explain each function
-
 #### App.js
 
 ##### Functions
+
 1. Finished in Template: Renders the data as many times as the times parameter says.
 
 2. Finished in Number: Just generate a random number to pass a parameter in -Templates functions.
 
 ##### Events
 
-1. Finished in -filter:
+1. Finished in -filter: Used for render a object of the selected type.
+
+2. Into #form: This are from the filter form, is used for filter by id for more info visit the [PokeApi](https://pokeapi.co/).
+
+#### Funcs.js
+
+##### Functions
+
+1. saveData: Saves the data.
+
+2. downloadFile: Download a file with the object saved.
+
+### Modules
+
+#### Items.js, Regions.js, Pokemons.js
+
+##### Functions
+
+1. Finished in Render: Renders the correspondient Data.
+
+2. TemplateRender-: Used for show the data in the DOM.
+
+3. -Get: Get data used for the render.
+
+#### Templates.js
+
+Here is the templates used for show the cards.
