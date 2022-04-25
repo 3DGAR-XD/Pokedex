@@ -84,7 +84,7 @@
           {{? (typeof(pokemon.photo) !== null) }}
           <img src="{{=pokemon.photo}}" class="card-img-top" alt="{{=pokemon.name}}">
           {{?}}
-            <ul class="list-group text-center">
+            <ul class="list-group text-center zebra">
               <li class="list-group-item fw-bold">Pokemon: {{=pokemon.name}}</li>
               <li class="list-group-item">Puntos de salud: {{=pokemon.hp}} Puntos</li>
               {{~pokemon.types: type:i}}
@@ -108,7 +108,7 @@
             {{? item.photo !== null }}
             <img src="{{=item.photo}}" class="card-img-top" alt="{{=item.name}}">
             {{?}}
-            <ul class="list-group text-center">
+            <ul class="list-group text-center zebra">
               <li class="list-group-item fw-bold">Item: {{=item.name}}</li>
               <li class="list-group-item">Costo: ${{=item.cost}}</li>
               <li class="list-group-item">Categoría: {{=item.category}}</li>
@@ -129,7 +129,7 @@
           {{? typeof(berry.photo) !== null }}
             <img src="{{=berry.photo}}" class="card-img-top" alt="{{=berry.name}}">
           {{?}}
-            <ul class="list-group text-center">
+            <ul class="list-group text-center zebra">
               <li class="list-group-item fw-bold">Baya: {{=berry.name}}</li>
               <li class="list-group-item">Categoria: {{=berry.category}}</li>
               <li class="list-group-item">Efectos o usos: {{=berry.effect}}</li>
@@ -144,7 +144,7 @@
       <script id="region" type="text/x-dot-template">
          <div class="row justify-content-center">
          {{~it: region}}
-            <ul class="list-group text-center col-10 p-0 my-2">
+            <ul class="list-group text-center col-10 p-0 my-2 zebra">
               <li class="list-group-item fw-bold">Region: {{=region.name}}</li>
                  <li class="list-group-item">
                  En esta region estas estas pokedexes
