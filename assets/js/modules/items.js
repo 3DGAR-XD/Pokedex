@@ -17,7 +17,6 @@ const itemRender = async (id) => {
     
     data.name = data.name[0].charAt(0).toUpperCase() + data.name.slice(1);
     data.category.name = data.category.name[0].charAt(0).toUpperCase() + data.category.name.slice(1);
-    console.log(data.sprites)
     const item = {
       name: data.name,
       photo: data.sprites.default,
