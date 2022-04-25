@@ -192,8 +192,8 @@ $(document).ready( async () => {
   .submit( async (e) => {
     e.preventDefault();
     if (selectFilter.value === "pokemon") {
-      if (inputFilter.value > 890) inputFilter.value === 890
-      else if (inputFilter.value < 0) inputFilter.value === 0
+      if (inputFilter.value > 890) inputFilter.value = 890
+      else if (inputFilter.value < 0) inputFilter.value = 0
       berriesData.inmerHTML = "";
     itemData.innerHTML = "";
     regionData.innerHTML = "";
@@ -205,8 +205,8 @@ $(document).ready( async () => {
       await pokemonTemplate(inputFilter.value, 1);
     }
     else if(selectFilter.value === "berries") {
-      if (inputFilter.value > 60) inputFilter.value === 60
-      else if (inputFilter.value < 0) inputFilter.value === 0
+      if (inputFilter.value > 60) inputFilter.value = 60
+      else if (inputFilter.value < 0) inputFilter.value = 0
     itemData.innerHTML = "";
     pokemonData.innerHTML = "";
     regionData.innerHTML = "";
@@ -218,8 +218,8 @@ $(document).ready( async () => {
       await berryTemplate(inputFilter.value, 1);
     }
     else if (selectFilter.value === "items") {
-      if (inputFilter.value > 1650) inputFilter.value === 1650
-      else if (inputFilter.value < 0) inputFilter.value === 0
+      if (inputFilter.value > 1650) inputFilter.value = 1650
+      else if (inputFilter.value < 0) inputFilter.value = 0
       berriesData.inmerHTML = "";
     pokemonData.innerHTML = "";
     regionData.innerHTML = "";
@@ -231,8 +231,8 @@ $(document).ready( async () => {
       await itemTemplate(inputFilter.value, 1);
     }
     else if (selectFilter.value === "regions") {
-    if (inputFilter.value > 7) inputFilter.value === 7
-      else if (inputFilter.value < 0) inputFilter.value === 0
+    if (inputFilter.value > 7) inputFilter.value = 7
+      else if (inputFilter.value < 0) inputFilter.value = 0
       berriesData.inmerHTML = "";
     itemData.innerHTML = "";
     pokemonData.innerHTML = "";
