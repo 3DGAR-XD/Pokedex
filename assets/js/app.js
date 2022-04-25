@@ -1,9 +1,9 @@
 // #region imports
-import {pokemonRender, templateRenderPokemon} from "/assets/js/modules/pokemon.js";
-import {itemRender, berryRender, templateRenderItem, templateRenderBerry} from "/assets/js/modules/items.js";
-import {regionRender, regionTemplateRender} from "/assets/js/modules/regions.js";
-import {templates} from "/assets/js/modules/templates.js";
-import {saveData, downloadFile} from "/assets/js/modules/funcs.js";
+import {pokemonRender, templateRenderPokemon} from "./modules/pokemon.js";
+import {itemRender, berryRender, templateRenderItem, templateRenderBerry} from "./modules/items.js";
+import {regionRender, regionTemplateRender} from "./modules/regions.js";
+import {templates} from "./modules/templates.js";
+import {saveData, downloadFile} from "./modules/funcs.js";
 // #endregion imports
 // #region constantes
 let a = [];
