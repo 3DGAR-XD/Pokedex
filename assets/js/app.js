@@ -55,7 +55,8 @@ const itemTemplate = async (id, time) => {
   const data = await templateRenderItem(id, time);
   const tempFunc = doT.template(templates.items);
 	const html = tempFunc(data);
-itemData.innerHTML += html;
+  console.log(data)
+  itemData.innerHTML += html;
 	$(".save-data-item").off()
 	  .click( (e) => {
 	    e.preventDefault();
@@ -119,7 +120,9 @@ const regionNumber = () => {
   return Math.floor(Math.random() * 7) + 1;
 }
 
-$(document).ready( () => {
+$(document).ready( async () => {
+  const id = pokemonNumber();
+  await pokemonTemplate(id, 1);
   $("#download-data").off()
     .click( () => {
       downloadFile(localStorage.getItem("session"),
@@ -138,7 +141,7 @@ $(document).ready( () => {
     textPokemon.classList.add("d-none");
     textRegion.classList.add("d-none");
     const id = berryNumber();
-    await berryTemplate(id, 5);
+    await berryTemplate(id, 1);
   })
   $("#items-filter").off()
   .click( async (e) => {
@@ -153,7 +156,7 @@ $(document).ready( () => {
     textBerries.classList.add("d-none");
     textRegion.classList.add("d-none");
     const id = itemNumber();
-    await itemTemplate(id, 5);
+    await itemTemplate(id, 1);
   })
   $("#region-filter").off()
   .click( async (e) => {
@@ -168,7 +171,7 @@ $(document).ready( () => {
     textItems.classList.add("d-none");
     textBerries.classList.add("d-none");
     const id = regionNumber();
-    await regionsTemplate(id, 3);
+    await regionsTemplate(id, 1);
   })
   $("#pokemon-filter").off()
   .click( async (e) => {
@@ -183,7 +186,7 @@ $(document).ready( () => {
     textBerries.classList.add("d-none");
     textRegion.classList.add("d-none");
     const id = pokemonNumber();
-    await templateRenderPokemon(id, 5);
+    await pokemonTemplate(id, 1);
   })
   $("#form").off()
   .submit( async (e) => {
