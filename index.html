@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Pokedex - Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cleanslate/0.10.1/cleanslate.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="/assets/css/styles.css">
+  <title>Pokedex App</title>
+</head>
+<body>
+  <main>
+    <h1 class="text-center py-4 m-0">Pokedex App</h1>
+    <article id="home">
+      <nav class="accordion" id="accordionExample">
+        <ul class="accordion-item m-0 p-0">
+         <li class="accordion-header" id="pokemon-filter">
+           <a class="accordion-button text-center collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false">
+             Pokemones
+          </a>
+       </li>
+      </ul>
+        <ul class="accordion-item m-0 p-0">
+          <li class="accordion-header" id="headingTwo">
+            <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" id="object-filter">
+              Objetos
+            </a>
+         </li>
+          <ul id="collapseTwo" class="accordion-collapse collapse text-center m-0 p-0" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <li class="accordion-body" id="items-filter">
+              Items
+            </li>
+            <li class="accordion-body" id ="berries-filter">
+              Bayas
+            </li>
+          </ul>
+       </ul>
+        <ul class="accordion-item m-0 p-0">
+         <li class="accordion-header" id="headingThree">
+           <a class="accordion-button collapsed" type="button" id="region-filter">
+             Regiones
+            </a>
+         </li>
+      </ul>
+      </nav>
+      <form id="form">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control my-4" id="input-filter" placeholder="Ingresa el id del elemento a buscar">
+         <label for="floatingInput">Ingresa el id del elemento a buscar</label>
+        </div>
+        <select class="form-select my-4" aria-label="Default select example" id="select-filter">
+          <option value="pokemon" selected>Pokemon</option>
+          <option value="items">Items</option>
+          <option value="berries">Bayas</option>
+          <option value="regions">Regiones</option>
+        </select>
+        <button type="submit" class="btn">Buscar</button>
+      </form>
+      <div class="row justify-content-end">
+        <a class="btn disabled" id="download-data">Descargar Datos</a>
+      </div>
+      <section id="section-pokemon">
+        <h2 class="d-none text-center m-5" id="text-pokemon">Pokemones en tendencia</h2>
+        <div id="pokemon-data"></div>
+      </section>
+      <section id="section-items">
+        <h2 class="d-none text-center m-5" id="text-items">Items</h2>
+        <div id="items-data"></div>
+      </section>
+      <section id="section-regions">
+        <h2 class="d-none text-center m-5" id="text-regions">Regiones</h2>
+        <div id="regions-data"></div>
+      </section>
+      <section id="section-berries">
+        <h2 class="d-none text-center m-5" id="text-berries">Bayas</h2>
+        <div id="berries-data"></div>
+      </section>
+      <!-- region render Scripts -->
+      <script id="pokemon" type="text/x-dot-template">
+         <div class="row justify-content-center">
+         {{~it: pokemon}}
+          <div class="card col-10 my-3">
+          {{? (typeof(pokemon.photo) !== null) }}
+          <img src="{{=pokemon.photo}}" class="card-img-top" alt="{{=pokemon.name}}">
+          {{?}}
+            <ul class="list-group text-center">
+              <li class="list-group-item fw-bold">Pokemon: {{=pokemon.name}}</li>
+              <li class="list-group-item">Puntos de salud: {{=pokemon.hp}} Puntos</li>
+              {{~pokemon.types: type:i}}
+              <li class="list-group-item">Este Pokémon es del tipo(s) {{=type}}</li>
+              {{~}}
+              {{~pokemon.weakness: weak:i}}
+              <li class="list-group-item">Este Pokémon es debil frente a los tipo(s) {{=weak}}</li>
+              {{~}}
+              <li class="list-group-item">Su cadena de evolucion es: {{=pokemon.evolution1}}, {{=pokemon.evolution2}} y {{=pokemon.evolution3}}</li>
+              <button class="btn list-group-item mb-2 save-data-pokemon" data-id="{{=pokemon.consecutivo}}">Guardar Datos de este Pokemon</button>
+            </ul>
+          </div>
+         {{~}}
+         </div>
+      </script>
+      
+      <script id="items" type="text/x-dot-template">
+         <div class="row justify-content-center my-2">
+         {{~it: item}}
+          <div class="card col-10 my-3">
+            {{? item.photo !== null }}
+            <img src="{{=item.photo}}" class="card-img-top" alt="{{=item.name}}">
+            {{?}}
+            <ul class="list-group text-center">
+              <li class="list-group-item fw-bold">Item: {{=item.name}}</li>
+              <li class="list-group-item">Costo: ${{=item.cost}}</li>
+              <li class="list-group-item">Categoría: {{=item.category}}</li>
+              <li class="list-group-item">Efectos:
+               {{=item.effect}}
+              </li>
+              <button class="btn list-group-item mb-2" id="save-data-item" data-id="{{=item.consecutivo}}">Guardar Datos de este Item</button>
+            </ul>
+          </div>
+         {{~}}
+         </div>
+      </script>
+      
+      <script id="berries" type="text/x-dot-template">
+         <div class="row justify-content-center my-2">
+         {{~it: berry}}
+          <div class="card col-10 my-3">
+          {{? typeof(berry.photo) !== null }}
+            <img src="{{=berry.photo}}" class="card-img-top" alt="{{=berry.name}}">
+          {{?}}
+            <ul class="list-group text-center">
+              <li class="list-group-item fw-bold">Baya: {{=berry.name}}</li>
+              <li class="list-group-item">Categoria: {{=berry.category}}</li>
+              <li class="list-group-item">Efectos o usos: {{=berry.effect}}</li>
+              <li class="list-group-item">Firmeza: {{=berry.firmness}}</li>
+              <button class="btn list-group-item mb-2 save-data-berry" data-id="{{=berry consecutivo}}">Guardar Datos de esta baya</button>
+            </ul>
+          </div>
+         {{~}}
+         </div>
+      </script>
+      
+      <script id="region" type="text/x-dot-template">
+         <div class="row justify-content-center">
+         {{~it: region}}
+            <ul class="list-group text-center col-10 p-0 my-2">
+              <li class="list-group-item fw-bold">Region: {{=region.name}}</li>
+                 <li class="list-group-item">
+                 En esta region estas estas pokedexes
+                 {{~region.pokedexes :pokedex:i}}
+                 {{=pokedex}}
+                 {{~}}
+                 </li>
+                 <li class="list-group-item">
+                 En esta region estan algunos pokemones como estos
+                 {{~region.pokemonsHere :pokemon:i}}
+                 {{=pokemon}}
+                 {{~}}
+                 </li>
+              <button class="btn list-group-item" id="save-data-region" data-id="{{=region.consecutivo}}">Guardar Datos de esta región</button>
+            </ul>
+         {{~}}
+         </div>
+      </script>
+      <!-- endregion render Scripts -->
+    </article>
+  </main>
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.3/doT.min.js"></script>
+  <script defer src="/assets/js/app.js" type="module"></script>
+</body>
+</html>
