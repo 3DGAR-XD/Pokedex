@@ -137,7 +137,7 @@ $(document).ready( () => {
     textItems.classList.add("d-none");
     textPokemon.classList.add("d-none");
     textRegion.classList.add("d-none");
-    const id = pokemonNumber();
+    const id = berryNumber();
     await berryTemplate(id, 5);
   })
   $("#items-filter").off()
@@ -152,7 +152,7 @@ $(document).ready( () => {
     textPokemon.classList.add("d-none");
     textBerries.classList.add("d-none");
     textRegion.classList.add("d-none");
-    const id = pokemonNumber();
+    const id = itemNumber();
     await itemTemplate(id, 5);
   })
   $("#region-filter").off()
@@ -167,7 +167,7 @@ $(document).ready( () => {
     textPokemon.classList.add("d-none");
     textItems.classList.add("d-none");
     textBerries.classList.add("d-none");
-    const id = pokemonNumber();
+    const id = regionNumber();
     await regionsTemplate(id, 3);
   })
   $("#pokemon-filter").off()
