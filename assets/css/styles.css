@@ -10,6 +10,12 @@ body {
 .card {
   background-color: var(--button-outline)
 }
+.accordion-button:not(.collapsed){
+  background-color: var(--button-color);
+}
+.accordion-collapse li {
+  cursor:pointer
+}
 h1 {
   background-color:var(--primary-color);
 }
