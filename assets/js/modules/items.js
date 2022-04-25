@@ -66,22 +66,11 @@ const itemGet = async (id) => {
     console.log(e);
   }
 }
-const typeGet = async (id) => {
-  try {
-    const res = await fetch(`${id}`);
-    if (!res.ok) notOk(res);
-    const data = await res.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 const templateRenderItem = async (id, times) => {
   try {
     let i = 0, items = [], item;
     while (i < times) {
-    item = await berryRender(id);
+    item = await itemRender(id);
     items.push(item);
     i += 1;
     }
