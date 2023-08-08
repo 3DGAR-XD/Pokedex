@@ -1,4 +1,5 @@
 # Pokedex
+## (WIP)
 
 This is a Pokedex Dashboard, when I have knowledge in React I will recreate it.
 
